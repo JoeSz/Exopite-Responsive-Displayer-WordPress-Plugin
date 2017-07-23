@@ -44,43 +44,54 @@ Bots: "google", "duckduckbot", "msnbot", "bingbot", "ask", "facebook", "yahoo", 
 ## Features
 
 #### Shortcodes
-Use as [device-name][/device-name], where device-name is a device from the list above.
+Use as `[device-name][/device-name]`, where device-name is a device from the list above.
 
 Eg.: for a mobile: [mobile]This text would be olny displayed on mobile devices.[/mobile]
 
 #### Classes
-Use as [device-name][/device-name], where device-name is a device from the list above.
+Use as `[device-name][/device-name]`, where device-name is a device from the list above.
 
 Eg.: for an Android tablet the following classes will be removed: .remove-tablet, .remove-android, .remove-android-tablet
 
 #### Body classes
-The plugin can add [device-name] to the body classes, for design purposes. It is disabled by default.
+The plugin can add `[device-name]` to the body classes, for design purposes. It is disabled by default.
 
 #### Hooks
 Can be used to perform any action on the seleted device. Eg. 302 redirect the user to the equivalent mobile page, display or hide content, etc...
 
-Add an action:     add_action( 'exopite-responsive-displayer-is-[device-name]', 'your-function' );
-Display an action: Exopite_Responsive_Displayer::is_[device-name]();
+Add an action:
+```php
+add_action( 'exopite-responsive-displayer-is-[device-name]', 'your-function' );
+```
+Display an action:
+```php
+Exopite_Responsive_Displayer::is_[device-name]();
+```
 
 #### Functions for device detections
-Exopite_Device_Detector::is_[device-name]() - true/false
+```php
+Exopite_Device_Detector::is_[device-name]()
+```
+true/false
 
+```php
 if ( Exopite_Device_Detector::is_mobile() ) { // code for mobile... }
+```
 
 #### Turn functions on and off
 Use can activate or deactive function via hooks. There is no admin option page in the moment and it is also not a priority for me.
 
 | Filters                                       | Desciption              | Defaults  | Values     |
 | --------------------------------------------- | ------------------------|-----------|------------|
-| exopite-responsive-displayer-add-body-classes |  To add body classes    | false     | true/false |
-| exopite-responsive-displayer-devices          |  To change devices list | see above | array      |
-| exopite-responsive-displayer-add-shortcodes   |  To register shortcodes | true      | true/false |
-| exopite-responsive-displayer-remove-classes   |  To remove classes      | true      | true/false |
+| `exopite-responsive-displayer-add-body-classes` |  To add body classes    | false     | true/false |
+| `exopite-responsive-displayer-devices`          |  To change devices list | see above | array      |
+| `exopite-responsive-displayer-add-shortcodes`   |  To register shortcodes | true      | true/false |
+| `exopite-responsive-displayer-remove-classes`   |  To remove classes      | true      | true/false |
 
 ## Technical details
 
 For remove the classes the plugin uses Output Buffering and ![PHP Simple HTML DOM Parser](http://simplehtmldom.sourceforge.net/) to parse the entire page after it is rendered by WordPress to the output buffer.
-To detect the devices, plugin uses information form $_SERVER['HTTP_USER_AGENT'].
+To detect the devices, plugin uses information form `$_SERVER['HTTP_USER_AGENT']`.
 
 ## Installation
 
