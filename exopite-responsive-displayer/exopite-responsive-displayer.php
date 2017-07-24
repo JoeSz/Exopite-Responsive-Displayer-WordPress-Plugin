@@ -3,14 +3,14 @@
  * Exopite Responsive Displayer
  *
  * @link              http://joe.szalai.org
- * @since             1.0.0
+ * @since             20170723
  * @package           Exopite_Responsive_Displayer
  *
  * @wordpress-plugin
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/
  * Description:       Remove HTML elements with class name "remove-destop", "remove-mobile", "remove-tablet"
- * Version:           20170723
+ * Version:           20170724
  * Author:            Joe Szalai
  * Author URI:        http://joe.szalai.org
  * License:           GPL-3.0+
@@ -169,7 +169,7 @@ class Exopite_Responsive_Displayer
             if ( Exopite_Device_Detector::$name() ) {
 
                 // Show content, can be override via filters
-                return apply_filters( 'exopite-responsive-displayer-' . $tag . '-shortcode-content', $content );
+                return do_shortcode( apply_filters( 'exopite-responsive-displayer-' . $tag . '-shortcode-content', $content ) );
             }
         }
 

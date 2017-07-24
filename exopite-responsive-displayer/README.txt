@@ -98,6 +98,9 @@ OR
 
 == Changelog ==
 
+= 20170724 =
+* Run shortcodes in shortcode content.
+
 = 20170723 =
 * Initial release.
 

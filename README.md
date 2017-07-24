@@ -119,4 +119,12 @@ OR
 * Tested on Firefox, Chrome, Edge, IE 11
 * Tested on Android phone 5.0+, Android tablet 5.1+, Windows 10
 
+## Changelog
+
+##### 20170724
+* Run shortcodes in shortcode content.
+
+##### 20170723
+* Initial release.
+
 [![forthebadge](http://forthebadge.com/images/badges/built-by-developers.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/for-you.svg)](http://forthebadge.com)
