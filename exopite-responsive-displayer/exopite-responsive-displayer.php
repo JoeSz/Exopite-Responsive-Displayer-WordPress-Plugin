@@ -10,7 +10,7 @@
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/
  * Description:       Remove HTML elements with class name "remove-destop", "remove-mobile", "remove-tablet"
- * Version:           20170724
+ * Version:           20170725
  * Author:            Joe Szalai
  * Author URI:        http://joe.szalai.org
  * License:           GPL-3.0+
@@ -30,7 +30,9 @@ if ( ! defined( 'WPINC' ) ) die;
  * - https://code.tutsplus.com/tutorials/html-parsing-and-screen-scraping-with-the-simple-html-dom-library--net-11856
  * - https://stackoverflow.com/questions/4812691/preserve-line-breaks-simple-html-dom-parser
  */
-require_once( plugin_dir_path( __FILE__ ) . '/simple_html_dom.php' );
+if( ! class_exists( 'simple_html_dom' ) ) {
+    require_once( plugin_dir_path( __FILE__ ) . '/simple_html_dom.php' );
+}
 
 require_once( plugin_dir_path( __FILE__ ) . '/class-exopite-mobile-detect.php' );
 
