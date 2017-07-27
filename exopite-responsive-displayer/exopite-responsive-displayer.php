@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/
- * Description:       Remove HTML elements with class name "remove-destop", "remove-mobile", "remove-tablet"
+ * Description:       Conditional display for different devices to control which content is being displayed via shortcodes, class names or hooks, depending on the visitor's device.
  * Version:           20170725
  * Author:            Joe Szalai
  * Author URI:        http://joe.szalai.org
