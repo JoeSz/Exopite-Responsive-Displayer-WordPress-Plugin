@@ -3,14 +3,14 @@
  * Exopite Responsive Displayer
  *
  * @link              http://joe.szalai.org
- * @since             20170723
+ * @since             20170825
  * @package           Exopite_Responsive_Displayer
  *
  * @wordpress-plugin
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/
  * Description:       Conditional display for different devices to control which content is being displayed via shortcodes, class names or hooks, depending on the visitor's device.
- * Version:           20170725
+ * Version:           20170825
  * Author:            Joe Szalai
  * Author URI:        http://joe.szalai.org
  * License:           GPL-3.0+
@@ -236,17 +236,27 @@ class Exopite_Responsive_Displayer
             $html->clear();
             unset($html);
 
+            $log = '';
+
             if ( self::$debug ) $after = microtime(true);
-            if ( self::$debug ) $buffer .= '<!-- Exopite Responsive Remover plugin HTML parsing last for ' . ( $after - $before ) . " s. -->\n";
+            if ( self::$debug ) $log .= '<!-- Exopite Responsive Remover plugin HTML parsing last for ' . ( $after - $before ) . " s. -->\n";
 
         }
 
-        return $buffer . $log;
+        if ( self::$debug ) {
+            if ( ! ( ( defined( 'JSON_REQUEST' ) && JSON_REQUEST ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) ) {
+                $buffer = $buffer . $log;
+            }
+        }
+
+        return $buffer;
     }
 
 }
 
-Exopite_Responsive_Displayer::init();
+if ( ! ( defined('XMLRPC_REQUEST') && XMLRPC_REQUEST ) ) {
+    Exopite_Responsive_Displayer::init();
+}
 
 /*
  * How to use
