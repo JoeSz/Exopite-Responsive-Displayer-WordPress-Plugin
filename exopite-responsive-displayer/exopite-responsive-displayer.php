@@ -3,14 +3,14 @@
  * Exopite Responsive Displayer
  *
  * @link              http://joe.szalai.org
- * @since             20170825
+ * @since             20171221
  * @package           Exopite_Responsive_Displayer
  *
  * @wordpress-plugin
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/
  * Description:       Conditional display for different devices to control which content is being displayed via shortcodes, class names or hooks, depending on the visitor's device.
- * Version:           20170825
+ * Version:           20171221
  * Author:            Joe Szalai
  * Author URI:        http://joe.szalai.org
  * License:           GPL-3.0+

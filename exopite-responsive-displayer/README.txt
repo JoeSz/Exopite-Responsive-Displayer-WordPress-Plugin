@@ -98,6 +98,9 @@ OR
 
 == Changelog ==
 
+= 20171221 =
+* Fix Mac detection
+
 = 20170725 =
 * Check if PHP Simple HTML DOM Parser class already included.
 
