@@ -15,7 +15,7 @@ class Exopite_Device_Detector
     }
 
     public static function is_mac() {
-        return (bool) strpos( $_SERVER['HTTP_USER_AGENT'], 'Mac' );
+        return ( ! self::is_ipad() && ! self::is_iphone() && (bool) strpos( $_SERVER['HTTP_USER_AGENT'], 'Mac' ) );
     }
 
     public static function is_ipad() {
