@@ -2,7 +2,7 @@
 ## WordPress Plugin
 
 - Author: Joe Szalai
-- Version: 20170723
+- Version: 20171221
 - Plugin URL: https://joe.szalai.org/exopite/exopite-responsive-displayer/
 - Demo URL: https://joe.szalai.org/exopite/exopite-responsive-displayer/
 - Theme GitHub URL: https://github.com/JoeSz/Exopite-Responsive-Displayer-WordPress-Plugin
@@ -120,6 +120,9 @@ OR
 * Tested on Android phone 5.0+, Android tablet 5.1+, Windows 10
 
 ## Changelog
+
+##### 20171221
+* Fix Mac detection
 
 ##### 20170725
 * Check if PHP Simple HTML DOM Parser class already included.
