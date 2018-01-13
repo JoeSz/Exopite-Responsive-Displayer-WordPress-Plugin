@@ -238,9 +238,7 @@ class Exopite_Responsive_Displayer
 
             $log = '';
 
-            if ( self::$debug ) $after = microtime(true);
-            if ( self::$debug ) $log .= '<!-- Exopite Responsive Remover plugin HTML parsing last for ' . ( $after - $before ) . " s. -->\n";
-
+            if ( self::$debug ) $log .= '<!-- Exopite Responsive Remover plugin HTML parsing last for ' . number_format( ( microtime(true) - $before ), 4 ) . " s. -->\n";
         }
 
         if ( self::$debug ) {
