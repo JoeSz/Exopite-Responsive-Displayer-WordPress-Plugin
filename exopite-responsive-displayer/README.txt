@@ -45,7 +45,7 @@ $_SERVER['HTTP_USER_AGENT'] can be faked, in this case the detection will be ina
 == Features / How to use it ==
 
 * Shortcodes
-Use as [device-name][/device-name], where device-name is a device from the list above.
+Use as "[device-name][/device-name]", where device-name is a device from the list above.
 
 Eg.: for a mobile: [mobile]This text would be olny displayed on mobile devices.[/mobile]
 
@@ -55,7 +55,7 @@ Eg.: for a mobile: [mobile]This text would be olny displayed on mobile devices.[
 Eg.: for an Android tablet the following classes will be removed: .remove-tablet, .remove-android, .remove-android-tablet
 
 * Body classes
-The plugin can add [device-name] to the body classes, for design purposes. It is disabled by default.
+The plugin can add "device-name" to the body classes, for design purposes. It is disabled by default.
 
 * Hooks
 Can be used to perform any action on the seleted device. Eg. 302 redirect the user to the equivalent mobile page, display or hide content, etc...
