@@ -22,7 +22,7 @@
 if ( ! defined( 'WPINC' ) ) die;
 
 define( 'EXOPITE_RESPONSIVE_DISPLAYER_PLUGIN_NAME', 'exopite-responsive-displayer' );
-define( 'EXOPITE_RESPONSIVE_DISPLAYER', plugin_dir_path( __FILE__ ) );
+define( 'EXOPITE_RESPONSIVE_DISPLAYER_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * PHP Simple HTML DOM Parser
@@ -277,7 +277,7 @@ if ( is_admin() ) {
      */
     if( ! class_exists( 'Puc_v4_Factory' ) ) {
 
-        require_once join( DIRECTORY_SEPARATOR, array( EXOPITE_RESPONSIVE_DISPLAYER, 'vendor', 'plugin-update-checker', 'plugin-update-checker.php' ) );
+        require_once join( DIRECTORY_SEPARATOR, array( EXOPITE_RESPONSIVE_DISPLAYER_PATH, 'vendor', 'plugin-update-checker', 'plugin-update-checker.php' ) );
 
     }
 
