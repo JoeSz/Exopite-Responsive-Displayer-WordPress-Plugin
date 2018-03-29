@@ -21,6 +21,9 @@
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) die;
 
+define( 'EXOPITE_RESPONSIVE_DISPLAYER_PLUGIN_NAME', 'exopite-responsive-displayer' );
+define( 'EXOPITE_RESPONSIVE_DISPLAYER', plugin_dir_path( __FILE__ ) );
+
 /**
  * PHP Simple HTML DOM Parser
  * @link https://sourceforge.net/projects/simplehtmldom/files/
@@ -255,6 +258,37 @@ class Exopite_Responsive_Displayer
 if ( ! ( defined('XMLRPC_REQUEST') && XMLRPC_REQUEST ) ) {
     Exopite_Responsive_Displayer::init();
 }
+
+/*
+ * Update
+ */
+if ( is_admin() ) {
+
+    /**
+     * A custom update checker for WordPress plugins.
+     *
+     * Useful if you don't want to host your project
+     * in the official WP repository, but would still like it to support automatic updates.
+     * Despite the name, it also works with themes.
+     *
+     * @link http://w-shadow.com/blog/2011/06/02/automatic-updates-for-commercial-themes/
+     * @link https://github.com/YahnisElsts/plugin-update-checker
+     * @link https://github.com/YahnisElsts/wp-update-server
+     */
+    if( ! class_exists( 'Puc_v4_Factory' ) ) {
+
+        require_once join( DIRECTORY_SEPARATOR, array( EXOPITE_RESPONSIVE_DISPLAYER, 'vendor', 'plugin-update-checker', 'plugin-update-checker.php' ) );
+
+    }
+
+    $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+        'https://update.szalai.org/?action=get_metadata&slug=' . EXOPITE_RESPONSIVE_DISPLAYER_PLUGIN_NAME, //Metadata URL.
+        __FILE__, //Full path to the main plugin file.
+        EXOPITE_RESPONSIVE_DISPLAYER_PLUGIN_NAME //Plugin slug. Usually it's the same as the name of the directory.
+    );
+
+}
+// End Update
 
 /*
  * How to use
