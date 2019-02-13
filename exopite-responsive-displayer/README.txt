@@ -10,6 +10,7 @@ Tested up to: 4.8
 Stable tag: 4.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Version: 20190213
 
 Exopite Responsive Displayer
 ----------------------------
@@ -97,6 +98,9 @@ OR
 3. Place [exopite-multifilter] shortcode to your content
 
 == Changelog ==
+
+= 20190213 =
+* Update PHP Simple HTML DOM Parser to 1.8.1 ensure PHP 7.3 compatibility
 
 = 20171221 =
 * Fix Mac detection
