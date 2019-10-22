@@ -245,10 +245,6 @@ class Exopite_Responsive_Displayer
 
     public static function remover_callback( $buffer ) {
 
-        /**
-         *
-         */
-
         if ( ! is_admin() && ! self::is_api_request() ) {
 
             if ( self::$debug ) $before = microtime(true);
