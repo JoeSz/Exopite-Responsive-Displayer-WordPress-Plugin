@@ -10,7 +10,7 @@
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/exopite/exopite-responsive-displayer/
  * Description:       Conditional display for different devices to control which content is being displayed via shortcodes, class names or hooks, depending on the visitor's device.
- * Version:           20190213
+ * Version:           20191022
  * Author:            Joe Szalai
  * Author URI:        https://joe.szalai.org
  * License:           GPL-3.0+
@@ -82,7 +82,7 @@ class Exopite_Responsive_Displayer
      * @link https://wordpress.stackexchange.com/questions/221202/does-something-like-is-rest-exist/317041#317041
      * @link https://gist.github.com/matzeeable/dfd82239f48c2fedef25141e48c8dc30
      */
-    public static function is_rest() {
+    public static function is_rest_request() {
         $prefix = rest_get_url_prefix( );
         if (defined('REST_REQUEST') && REST_REQUEST // (#1)
             || isset($_GET['rest_route']) // (#2)
@@ -95,13 +95,40 @@ class Exopite_Responsive_Displayer
         return strpos( $current_url['path'], $rest_url['path'], 0 ) === 0;
     }
 
+    /**
+     * @link https://wordpress.stackexchange.com/questions/221202/does-something-like-is-rest-exist/279422#279422
+     * @link https://wordpress.stackexchange.com/questions/221202/does-something-like-is-rest-exist/339174#339174
+     */
+    public static function is_rest_url() {
+        return ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-json/' ) !== false);
+    }
+
+    public static function is_rest() {
+        return ( self::is_rest_request() || self::is_rest_url() );
+    }
+
+    public static function is_api_request() {
+
+        if (
+                ( defined( 'JSON_REQUEST' ) && JSON_REQUEST ) ||
+                self::is_rest() ||
+                ( defined('XMLRPC_REQUEST') && XMLRPC_REQUEST ) ||
+                ( defined('DOING_AJAX') && DOING_AJAX ) ||
+                wp_doing_ajax()
+
+            ) {
+            return true;
+        }
+
+        return false;
+
+    }
+
     public static function init() {
 
-        if ( ( defined( 'JSON_REQUEST' ) && JSON_REQUEST ) ||
-            self::is_rest() ||
-             ( defined('XMLRPC_REQUEST') && XMLRPC_REQUEST ) ||
-             ( defined('DOING_AJAX') && DOING_AJAX )
-           ) return;
+        if ( is_admin() || self::is_api_request() ) {
+            return;
+        }
 
         self::$debug = apply_filters( 'exopite-responsive-displayer-debug' , self::$debug );
         self::$add_body_classes = apply_filters( 'exopite-responsive-displayer-add-body-classes' , self::$add_body_classes );
@@ -111,9 +138,12 @@ class Exopite_Responsive_Displayer
 
         if ( self::$remove_classes ) {
 
-            /*
+            /**
              * Start buffering when wp_loaded hook called
              * end buffering when showdown hook called
+             *
+             * @link https://codex.wordpress.org/Plugin_API/Action_Reference
+             * @link https://wordpress.stackexchange.com/questions/214498/when-is-wp-loaded-initiated-only-with-admin-or-only-when-user-enters-the-site-or
              */
             add_action('wp_loaded', array( 'Exopite_Responsive_Displayer', 'buffer_start' ) );
             add_action('shutdown', array( 'Exopite_Responsive_Displayer', 'buffer_end' ) );
@@ -215,7 +245,11 @@ class Exopite_Responsive_Displayer
 
     public static function remover_callback( $buffer ) {
 
-        if ( ! is_admin() ) {
+        /**
+         *
+         */
+
+        if ( ! is_admin() && ! self::is_api_request() ) {
 
             if ( self::$debug ) $before = microtime(true);
 
@@ -266,8 +300,8 @@ class Exopite_Responsive_Displayer
 
             }
 
-            // Dumps the internal DOM tree back into string
             $buffer = $html->save();
+
             $html->clear();
             unset($html);
 
@@ -282,6 +316,8 @@ class Exopite_Responsive_Displayer
             }
         }
 
+        // file_put_contents( EXOPITE_RESPONSIVE_DISPLAYER_PATH . 'buffer.log', var_export( $buffer, true ) . "\n\n" );
+
         return $buffer;
     }
 
@@ -289,8 +325,8 @@ class Exopite_Responsive_Displayer
 
 Exopite_Responsive_Displayer::init();
 
-/*
- * Update
+/**
+ * Updater
  */
 if ( is_admin() ) {
 
