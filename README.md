@@ -46,7 +46,7 @@ Bots: "google", "duckduckbot", "msnbot", "bingbot", "ask", "facebook", "yahoo", 
 #### Shortcodes
 Use as `[device-name][/device-name]`, where device-name is a device from the list above.
 
-Eg.: for a mobile: [mobile]This text would be olny displayed on mobile devices.[/mobile]
+Eg.: for a mobile: [mobile]This text would be only displayed on mobile devices.[/mobile]
 
 #### Classes
 Use as `<element class="remove-[device-name]">...</element>`, where device-name is a device from the list above.
