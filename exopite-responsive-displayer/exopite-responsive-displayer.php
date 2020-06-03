@@ -34,7 +34,7 @@ define( 'EXOPITE_RESPONSIVE_DISPLAYER_PATH', plugin_dir_path( __FILE__ ) );
  * - https://stackoverflow.com/questions/4812691/preserve-line-breaks-simple-html-dom-parser
  */
 if( ! class_exists( 'simple_html_dom' ) ) {
-    require_once( plugin_dir_path( __FILE__ ) . '/simple_html_dom.php' );
+    require_once( plugin_dir_path( __FILE__ ) . '/simple_html_dom.1.9.1.php' );
 }
 
 require_once( plugin_dir_path( __FILE__ ) . '/class-exopite-mobile-detect.php' );
