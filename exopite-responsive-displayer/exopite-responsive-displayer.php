@@ -10,7 +10,7 @@
  * Plugin Name:       Exopite Responsive Displayer
  * Plugin URI:        https://joe.szalai.org/exopite/exopite-responsive-displayer/
  * Description:       Conditional display for different devices to control which content is being displayed via shortcodes, class names or hooks, depending on the visitor's device.
- * Version:           20191022
+ * Version:           20200608
  * Author:            Joe Szalai
  * Author URI:        https://joe.szalai.org
  * License:           GPL-3.0+
@@ -319,7 +319,12 @@ class Exopite_Responsive_Displayer
 
 }
 
-Exopite_Responsive_Displayer::init();
+/**
+ * This plugin based on HTTP_USER_AGENT, so if it not set, we have nothing to do.
+ */
+if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+    Exopite_Responsive_Displayer::init();
+}
 
 /**
  * Updater
