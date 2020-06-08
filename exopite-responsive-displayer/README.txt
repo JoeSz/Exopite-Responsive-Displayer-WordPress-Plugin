@@ -99,6 +99,10 @@ OR
 
 == Changelog ==
 
+= 20200608 =
+* Update Simple HTML DOM to 1.9.1
+* Check if HTTP_USER_AGENT exists before init plugin.
+
 = 20190213 =
 * Update PHP Simple HTML DOM Parser to 1.8.1 ensure PHP 7.3 compatibility
 
