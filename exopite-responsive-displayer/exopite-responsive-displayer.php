@@ -130,6 +130,10 @@ class Exopite_Responsive_Displayer
             return;
         }
 
+        if ( ! isset( $_SERVER['HTTP_USER_AGENT'] ) ||empty( $_SERVER['HTTP_USER_AGENT'] ) ) {
+            return;
+        }
+
         self::$debug = apply_filters( 'exopite-responsive-displayer-debug' , self::$debug );
         self::$add_body_classes = apply_filters( 'exopite-responsive-displayer-add-body-classes' , self::$add_body_classes );
         self::$devices = apply_filters( 'exopite-responsive-displayer-devices' , self::$devices );
